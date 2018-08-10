@@ -1,4 +1,6 @@
 import wpilib
+from wpilib.drive import DifferentialDrive
+
 
 
 class MyRobot(wpilib.IterativeRobot):
@@ -11,7 +13,8 @@ class MyRobot(wpilib.IterativeRobot):
         self.rightMotor = wpilib.Victor(1)
 
         #self.myRobot = wpilib.RobotDrive(0, 1)
-        self.myRobot = wpilib.DifferentialDrive(self.leftMotor, self.rightMotor)
+        self.myRobot = DifferentialDrive(self.leftMotor, self.rightMotor)
+
 
         # joyStick 0
         self.joyStick = wpilib.Joystick(0)
@@ -41,7 +44,7 @@ class MyRobot(wpilib.IterativeRobot):
 
     def teleopPeriodic(self):
         '''Runs the motors with tank steering'''
-
+        print("pyrun")
         move = self.joyStick.getRawAxis(1)
         turn = self.joyStick.getRawAxis(4)
         self.myRobot.arcadeDrive(move, turn)
