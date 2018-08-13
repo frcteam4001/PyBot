@@ -14,9 +14,10 @@ class MyRobot(wpilib.IterativeRobot):
         #self.myRobot = wpilib.RobotDrive(0, 1)
         self.myRobot = DifferentialDrive(self.leftMotor, self.rightMotor)
 
+        # joysticks 1 & 2 on the driver station
+        self.leftStick = wpilib.Joystick(0)
+        self.rightStick = wpilib.Joystick(1)
 
-        # joyStick 0
-        self.joyStick = wpilib.Joystick(0)
         self.myRobot.setExpiration(0.1)
         self.myRobot.setSafetyEnabled(True)
 
@@ -47,9 +48,7 @@ class MyRobot(wpilib.IterativeRobot):
         :return:
         """
 
-        move = self.joyStick.getRawAxis(1)
-        turn = self.joyStick.getRawAxis(4)
-        self.myRobot.arcadeDrive(move, turn)
+        self.myRobot.tankDrive(self.leftStick.getY(), self.rightStick.getY())
 
 
 if __name__ == '__main__':
