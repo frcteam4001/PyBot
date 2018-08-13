@@ -8,7 +8,6 @@ class MyRobot(wpilib.IterativeRobot):
         '''Robot initialization function'''
 
         # object that handles basic drive operations
-
         self.leftMotor = wpilib.Victor(0)
         self.rightMotor = wpilib.Victor(1)
 
@@ -36,15 +35,17 @@ class MyRobot(wpilib.IterativeRobot):
 
 
     def teleopInit(self):
-        '''
-        Executed at the start of teleop mode
-        '''
+        """Executed at the start of teleop mode
+        :return:
+        """
         self.myRobot.setSafetyEnabled(True)
 
 
     def teleopPeriodic(self):
-        '''Runs the motors with tank steering'''
-        print("pyrun")
+        """Runs the motors with tank steering
+        :return:
+        """
+
         move = self.joyStick.getRawAxis(1)
         turn = self.joyStick.getRawAxis(4)
         self.myRobot.arcadeDrive(move, turn)
